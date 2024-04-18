@@ -57,17 +57,23 @@ def mainGame():
     playerScore = handValue(myCards)
     opponentScore = handValue(opponentCards)
     print(f'Opponent Score was: {opponentScore}')
+    print(f'Opponent hand was {opponentCards}')
     print(f'Your score was: {playerScore}')
-    if opponentScore > 21:
+    if playerScore > 21 and opponentScore > 21:
+        if playerScore < opponentScore:
+            print('Really? Both busted? Well, yours was lower so... You Win!') 
+        else:
+            print('Really? Both busted? Well, yours was higher so... You Double Lose!') 
+    elif opponentScore > 21:
         print('You win! That dude busted. He was a punk anyways')
-    if playerScore > 21:
+    elif playerScore > 21:
         print('You went over 21. That is... not great. You lose :(')
     elif playerScore > opponentScore:
-        print(f'You win! You sure did beat a computer.')
+        print('You win! You sure did beat a computer.')
     elif opponentScore > playerScore:
-        print(f'Blimey. Losing to a computer is... well... gg anyways.')
+        print('Blimey. Losing to a computer is... well... gg anyways.')
     elif playerScore == opponentScore:
-        print(f'Why did I do f strings for these? Anyways, tie game.')
+        print('Why did I do f strings for these? Anyways, tie game.')
 
 
 if __name__ == "__main__":
