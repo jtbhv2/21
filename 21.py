@@ -25,6 +25,7 @@ def mainGame():
     opponentCards = [deck.pop(), deck.pop()]
 
     playerTurn = True
+    superDrawCount = 0
 
     while True: #player's turn
         if playerTurn:
@@ -41,7 +42,19 @@ def mainGame():
             else:
                 print("Invalid choice. Please enter 'H' for hit or 'S' for stay.")
         else:
-            if handValue(opponentCards) < 21:
+            if handValue(opponentCards) < 21 and superDrawCount == 0:
+                superDrawCount += 1
+                superDrawChance = random.random() #I like the idea of the computer cheating
+                if superDrawChance <.5:
+                    superDrawCard = 21 - handValue(opponentCards)
+                    for card in deck:
+                        if card == superDrawCard:
+                            opponentCards.append(superDrawCard)
+                            deck.remove(superDrawCard)
+                            playerTurn = True
+                        else:
+                            
+            elif handValue(opponentCards) < 21:
                 if handValue(opponentCards) < statistics.mean(deck):
                     opponentCards.append(deck.pop()) #computer checks to see if numbers are in their favor, and if so, this is a hit
                     playerTurn = True
