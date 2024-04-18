@@ -60,8 +60,8 @@ def mainGame():
     print(f'Opponent hand was {opponentCards}')
     print(f'Your score was: {playerScore}')
     if playerScore > 21 and opponentScore > 21:
-        if playerScore < opponentScore:
-            print('Really? Both busted? Well, yours was lower so... You Win!') 
+        if playerScore <= opponentScore:
+            print('Really? Both busted? Well, yours was lower...or tied... so... You Win!') 
         else:
             print('Really? Both busted? Well, yours was higher so... You Double Lose!') 
     elif opponentScore > 21:
